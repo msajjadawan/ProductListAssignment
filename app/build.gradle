@@ -1,0 +1,118 @@
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.innovidio.mobilephoneslist"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            multiDexEnabled = true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+
+    dataBinding{
+        enabled = true
+    }
+
+}
+
+repositories {
+    // ... other project repositories
+    jcenter() // includes the MoPub SDK and AVID library
+    maven { url "https://s3.amazonaws.com/moat-sdk-builds" }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // add the Firebase SDK for Google Analytics
+//    implementation 'com.google.firebase:firebase-analytics:17.4.1'
+//    implementation 'com.google.firebase:firebase-core:17.4.1'
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
+
+
+    def dagger_version = '2.25.4'
+    implementation "com.google.dagger:dagger:$dagger_version"
+
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+
+    //Room
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+
+    def retrofit_version = '2.6.2'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+
+    //Moshi
+    implementation 'com.squareup.moshi:moshi:1.9.2'
+
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-4'
+    //for production only
+    implementation 'com.squareup.leakcanary:leakcanary-object-watcher-android:2.1'
+
+    implementation 'org.greenrobot:eventbus:3.2.0'
+//    // Mopub Ads Integration
+//    implementation('com.mopub:mopub-sdk:+@aar') {
+//        transitive = true
+//    }
+
+//    // Google (AdMob & Ad Manager)
+//    implementation 'com.google.android.gms:play-services-ads:18.3.0'
+//    implementation 'com.mopub.mediation:admob:18.3.0.1'
+//
+//// Facebook Audience Network
+//    implementation 'com.facebook.android:audience-network-sdk:5.6.0'
+//    implementation 'com.mopub.mediation:facebookaudiencenetwork:5.6.0.0'
+
+//android-youtube-player
+//https://github.com/PierfrancescoSoffritti/android-youtube-player
+ //   implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+ //   implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.18'
+
+//TapTargetView
+    //https://github.com/KeepSafe/TapTargetView
+  //  implementation 'com.getkeepsafe.taptargetview:taptargetview:1.13.0'
+
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+//    implementation 'com.github.bumptech.glide:glide:4.11.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+}
+//apply plugin: 'com.google.gms.google-services'
